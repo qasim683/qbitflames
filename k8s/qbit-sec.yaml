@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: qbit-secret
+data:
+  MYSQL_ROOT_PASSWORD: MTIz
+  MYSQL_DATABASE: cWJpdGZsYW1lcw== 
+  MYSQL_USER: cWJpdGZsYW1lcw==
+  MYSQL_PASSWORD: dHN0MDMwMDY4OTE2ODM=

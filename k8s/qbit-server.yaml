@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: qbit-server
+  labels:
+    app: qbit-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: qbit-server
+      tier: app
+  template:
+    metadata:
+      name: qbit-pod-server
+      labels:
+        app: qbit-server
+        tier: app
+    spec:
+      containers:
+        - name: qbit-server
+          image: qasim683/qbit
+          ports:
+            - containerPort: 8000
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: qbit-secret
+                  key: MYSQL_ROOT_PASSWORD
+              name: MYSQL_DATABASE
+              valueFrom:
+                secretKeyRef:
+                  name: qbit-secret
+                  key: MYSQL_DATABASE     
+              name: MYSQL_USER
+              valueFrom:
+                secretKeyRef:
+                  name: qbit-secret
+                  key: MYSQL_USER
+              name: MYSQL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: qbit-secret
+                  key: MYSQL_PASSWORD
+              
