@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: qbit-server
-          image: qasim683/qbit-server2
+          image: qasim683/qbit-server4
           ports:
             - containerPort: 8000
           env:
@@ -53,3 +53,18 @@ spec:
                 secretKeyRef:
                   name: qbit-secret
                   key: MYSQL_PORT
+            - name: DJ_ALLOWED_HOSTS
+              valueFrom:
+                configMapKeyRef:
+                  name: dj-config
+                  key: DJ_ALLOWED_HOSTS
+            - name: DEBUG
+              valueFrom:
+                configMapKeyRef:
+                  name: dj-config
+                  key: DEBUG
+            - name: DJ_SECRET_KEY
+              valueFrom:
+                configMapKeyRef:
+                  name: dj-config
+                  key: DJ_SECRET_KEY

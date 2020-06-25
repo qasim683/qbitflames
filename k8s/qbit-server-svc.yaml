@@ -6,7 +6,8 @@ metadata:
     app: qbit-server-svc
 spec:
   ports:
-    - port: 8000
+    - targetPort: 8000
+      port: 8000
       nodePort: 31004
   selector:
     app: qbit

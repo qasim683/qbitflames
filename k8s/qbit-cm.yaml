@@ -1,13 +1,9 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: qbit-cm
+  name: dj-config
 data:
 
-  !includedir /etc/mysql/conf.d/
-  !includedir /etc/mysql/mysql.conf.d/
-  [client]
-  database: qbitflames
-  user: qbitflames
-  password: tst03006891683
-  default-character-set: utf8
+  DJ_SECRET_KEY: 'j-9%*@0rkf3^j3t22q4itl+ni4qzaa*mmvlim0h-q*z=-!39zj' 
+  DEBUG: '1'
+  DJ_ALLOWED_HOSTS: '10.128.0.31:31004'  
