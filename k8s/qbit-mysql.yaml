@@ -19,28 +19,38 @@ spec:
     spec:
       containers:
         - name: qbit-mysql
-          image: qasim683/mysql1
+          image: qasim683/mysql2
           ports:
             - containerPort: 3306
           env:
-            - name: MYSQL_ROOT_PASSWORD
+            - name: MYSQL_DATABASE
               valueFrom:
                 secretKeyRef:
                   name: qbit-secret
-                  key: MYSQL_ROOT_PASSWORD
-              name: MYSQL_DATABASE
-              valueFrom:
-                secretKeyRef:
-                  name: qbit-secret
-                  key: MYSQL_DATABASE     
+                  key: MYSQL_DATABASE
               name: MYSQL_USER
               valueFrom:
                 secretKeyRef:
                   name: qbit-secret
-                  key: MYSQL_USER
+                  key: MYSQL_USER     
               name: MYSQL_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: qbit-secret
                   key: MYSQL_PASSWORD
+              name: MYSQL_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: qbit-secret
+                  key: MYSQL_ROOT_PASSWORD
+              name: MYSQL_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: qbit-secret
+                  key: MYSQL_HOST
+              name: MYSQL_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: qbit-secret
+                  key: MYSQL_PORT
 

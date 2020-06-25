@@ -1,4 +1,4 @@
-FROM mysql:latest
+FROM mysql:5.7
 ENV MYSQL_ROOT_PASSWORD 123
 ENV MYSQL_DATABASE qbitflames
 ENV MYSQL_USER qbitflames

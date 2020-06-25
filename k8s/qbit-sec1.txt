@@ -1,0 +1,6 @@
+NAME=qbitflames
+USER=qbitflames
+PASSWORD=tst03006891683
+HOST=0.0.0.0
+PORT=3306
+

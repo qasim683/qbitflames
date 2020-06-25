@@ -8,39 +8,48 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: qbit-server
+      app: qbit
       tier: app
   template:
     metadata:
       name: qbit-pod-server
       labels:
-        app: qbit-server
+        app: qbit
         tier: app
     spec:
       containers:
         - name: qbit-server
-          image: qasim683/qbit
+          image: qasim683/qbit-server2
           ports:
             - containerPort: 8000
           env:
-            - name: MYSQL_ROOT_PASSWORD
+            - name: MYSQL_HOST
               valueFrom:
                 secretKeyRef:
                   name: qbit-secret
-                  key: MYSQL_ROOT_PASSWORD
-              name: MYSQL_DATABASE
+                  key: MYSQL_HOST
+            - name: MYSQL_DATABASE
               valueFrom:
                 secretKeyRef:
                   name: qbit-secret
-                  key: MYSQL_DATABASE     
-              name: MYSQL_USER
+                  key: MYSQL_DATABASE
+            - name: MYSQL_USER
               valueFrom:
                 secretKeyRef:
                   name: qbit-secret
-                  key: MYSQL_USER
-              name: MYSQL_PASSWORD
+                  key: MYSQL_USER     
+            - name: MYSQL_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: qbit-secret
                   key: MYSQL_PASSWORD
-              
+            - name: MYSQL_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: qbit-secret
+                  key: MYSQL_ROOT_PASSWORD 
+            - name: MYSQL_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: qbit-secret
+                  key: MYSQL_PORT
