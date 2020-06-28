@@ -78,11 +78,11 @@ WSGI_APPLICATION = 'qbit.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.getenv('MYSQL_DATABASE'),
-        'USER': os.getenv('MYSQL_USER'),
-        'PASSWORD': os.getenv('MYSQL_PASSWORD'),
-        'HOST': os.getenv('MYSQL_HOST'),
-        'PORT': os.getenv('MYSQL_PORT')
+        'NAME': 'qbitflames',#os.getenv('MYSQL_DATABASE'),
+        'USER': 'qbitflames',#os.getenv('MYSQL_USER'),
+        'PASSWORD': 'tst03006891683',#os.getenv('MYSQL_PASSWORD'),
+        'HOST': 'localhost',#os.getenv('MYSQL_HOST'),
+        'PORT': '3306'#os.getenv('MYSQL_PORT')
     }
 }
 
