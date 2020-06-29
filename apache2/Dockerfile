@@ -1,26 +1,18 @@
-FROM python:3
-
-ENV PYTHONDONTWRITEBYTECODE 1
-ENV PYTHONUNBUFFERED 1
+FROM ubuntu
 
 RUN apt-get update
-RUN apt-get upgrade -y
-RUN apt-get install -y apt-utils
-RUN apt-get install -y apache2
-RUN apt-get install -y apache2-utils
-
-RUN apt-get install -y libapache2-mod-wsgi 
+RUN apt-get install -y apt-utils vim curl apache2 apache2-utils
+RUN apt-get -y install python3 libapache2-mod-wsgi-py3
+RUN ln /usr/bin/python3 /usr/bin/python
+RUN apt-get -y install python3-pip
+RUN ln /usr/bin/pip3 /usr/bin/pip
+RUN pip install --upgrade pip
+RUN pip install django ptvsd
 RUN apt-get install -y git
-RUN pip3 install virtualenv
 WORKDIR /var/www/
-RUN python3 -m venv env
-RUN /bin/bash -c "source env/bin/activate"
 RUN git clone https://github.com/qasim683/django_apache2.git && cd django_apache2
-#RUN rm -f /var/www/django_apache2/qbit/wsgi.py
-#COPY ./wsgi.py /var/www/django_apache2/qbit/
-WORKDIR /var/www/django_apache2/
-RUN pip3 install -r requirements.txt
-RUN pip3 install uwsgi
+RUN pip install -r requirements.txt
+
 
 
 RUN rm -f /etc/apache2/sites-available/000-default.conf
