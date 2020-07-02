@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'j-9%*@0rkf3^j3t22q4itl+ni4qzaa*mmvlim0h-q*z=-!39zj'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = int(os.getenv("DEBUG", default=0))
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = os.getenv("DJ_ALLOWED_HOSTS").split(" ")
 
 
 # Application definition
@@ -78,11 +78,11 @@ WSGI_APPLICATION = 'qbit.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'qbitflames',#os.getenv('MYSQL_DATABASE'),
-        'USER': 'qbitflames',#os.getenv('MYSQL_USER'),
-        'PASSWORD': 'tst03006891683',#os.getenv('MYSQL_PASSWORD'),
-        'HOST': 'localhost',#os.getenv('MYSQL_HOST'),
-        'PORT': '3306'#os.getenv('MYSQL_PORT')
+        'NAME': os.getenv('MYSQL_DATABASE'),
+        'USER': os.getenv('MYSQL_USER'),
+        'PASSWORD': os.getenv('MYSQL_PASSWORD'),
+        'HOST': os.getenv('MYSQL_HOST'),
+        'PORT': os.getenv('MYSQL_PORT')
     }
 }
 
