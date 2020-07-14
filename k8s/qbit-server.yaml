@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: qbit-server
-          image: qasim683/qbit-server2
+          image: qasim683/qbit-apache-server
           ports:
             - containerPort: 8000
           env:
